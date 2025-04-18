@@ -166,16 +166,19 @@ function FibMemo() {
         let count = 0
         const memo: number[] = []
         const start = performance.now()
-        function fib(n: number,): number {
+        function fib(n: number): number {
             count++
-            if (memo[n]) {
+
+            if (memo[n] !== undefined) {
                 return memo[n]
             }
-            if (n <= 1) return n
-            for (let i = 0; i <= n; i++) {
-                memo[n] = fib(n - 2) + fib(n - 1)
-                return memo[n]
+
+            if (n <= 1) {
+                return n
             }
+
+            memo[n] = fib(n - 1) + fib(n - 2)
+            return memo[n]
         }
         setResult(fib(Number(input)))
         console.log({ memo });
