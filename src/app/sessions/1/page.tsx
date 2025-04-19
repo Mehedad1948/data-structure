@@ -8,14 +8,13 @@ export default function Page() {
     const [count, setCount] = useState<number | null>(null)
     const [elapsedTime, setElapsedTime] = useState<number | null>(null)
     const [result, setResult] = useState(0)
-    // Naive Fibonacci
+    
     function fib(n: number, counter: { value: number }): number {
         counter.value++
         if (n <= 1) return n
         return fib(n - 1, counter) + fib(n - 2, counter)
     }
 
-    // Memoized Fibonacci
     function fibMemo(n: number, counter: { value: number }, memo: Record<number, number>): number {
         counter.value++
         if (n in memo) return memo[n]
